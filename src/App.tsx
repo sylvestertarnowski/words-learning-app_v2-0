@@ -1,12 +1,12 @@
 import React from 'react';
 import './App.css';
 import { MyProvider } from './components/Context';
-import NavBar from './components/NavBar';
+import Main from './components/Main';
 
 const App: React.FC<any> = () => {
   return (
     <MyProvider>
-      <NavBar />
+      <Main />
     </MyProvider>
   );
 }

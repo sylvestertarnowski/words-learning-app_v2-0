@@ -8,7 +8,7 @@ class NavBar extends React.Component {
                 <MyContext.Consumer>
                     {(context) => {
                         return (
-                            context.state.lists
+                            "Navbar!"
                         )
                     }}
                 </MyContext.Consumer>

@@ -19,7 +19,7 @@ class Main extends React.Component {
         learning: <Learning />,
     }
 
-    changeScreen = (screen: S["currentScreen"]) => {
+    setScreen = (screen: S["currentScreen"]) => {
         this.setState({
             currentScreen: screen,
         })
@@ -30,7 +30,7 @@ class Main extends React.Component {
 
         return (
             <div className="main-container">
-                <NavBar />
+                <NavBar setScreen={this.setScreen} />
                 {currentScreen}
             </div>
         )

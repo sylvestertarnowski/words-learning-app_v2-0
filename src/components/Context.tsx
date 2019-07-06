@@ -1,10 +1,14 @@
 import * as React from 'react';
+import translations from './translations.js';
 
 const MyContext = React.createContext({} as any);
 
 class MyProvider extends React.Component {
     readonly state = {
         lang: 'en',
+        translations: {
+            ...translations,
+        },
         en: {
             "list 1": {
                 title: "List 1"

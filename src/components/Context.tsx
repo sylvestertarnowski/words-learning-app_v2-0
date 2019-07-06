@@ -9,28 +9,34 @@ class MyProvider extends React.Component {
         translations: {
             ...translations,
         },
-        en: {
-            "list 1": {
+        en: [
+            {
                 title: "List 1"
             },
-            "list 2": {
+            {
                 title: "List 2"
             },
-            "list 3": {
+            {
                 title: "List 3"
             },
-        },
-        pl: {
-            "list 1": {
+        ],
+        pl: [
+            {
                 title: "List 1"
             },
-            "list 2": {
+            {
                 title: "List 2"
             },
-            "list 3": {
+            {
                 title: "List 3"
             },
-        },
+        ],
+    }
+
+    setLanguage = (lang: 'en' | 'pl') => {
+        this.setState({
+            lang: lang,
+        })
     }
 
     render() {

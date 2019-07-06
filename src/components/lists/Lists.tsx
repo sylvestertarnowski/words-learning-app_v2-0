@@ -1,30 +1,46 @@
 import * as React from 'react';
 import { MyContext } from '../Context';
 
+
 type S = {
-    [key: string]: any,
+    loading: boolean,
+    lang: 'pl' | 'en',
+    en: { title: string }[],
+    pl: { title: string }[],
+    titlesOfLists: string | JSX.Element[],
 }
 
 class Lists extends React.Component {
     readonly state = {
+        loading: true,
+        titlesOfLists: 'Loading...',
     } as S;
 
+
+
     componentDidMount() {
+        const { lang, pl, en } = this.context.state;
         this.setState({
-            ...this.context.state[this.context.state.lang]
+            lang: lang,
+            en: en,
+            pl: pl,
+        }, this.getTitles)
+    }
+
+    getTitles = () => {
+        const titlesOfLists = this.state[this.state.lang].map(item => <li key={item.title}>
+            Title: {item.title}
+        </li>)
+        this.setState({
+            titlesOfLists: titlesOfLists,
         })
     }
 
     render() {
-        const lists = Object.keys(this.state);
-        const titlesOfLists = lists.map(item => <li key={item}>
-            Title: {item}
-        </li>)
-
         return (
             <div>
                 <ul>
-                    {titlesOfLists}
+                    {this.state.titlesOfLists}
                 </ul>
             </div>
         )

@@ -8,6 +8,7 @@ class NavBar extends React.Component<any, any> {
         const { lists, creation, learning } = translations[lang].navBar;
         return (
             <div className="navbar-container">
+                <div className="max-width-wrapper">
                 <ul className="navbar-navigation-buttons">
                     <li onClick={() => this.props.setScreen('lists')}>
                         {lists}
@@ -19,14 +20,16 @@ class NavBar extends React.Component<any, any> {
                         {learning}
                     </li>
                 </ul>
-
+                <label className="navbar-language-dropdown">
+                    Language:
                 <select 
-                    className="navbar-language-dropdown"
                     onChange={(e) => this.context.setLanguage(e.target.value)}
                 >
                     <option value="en">English</option>
                     <option value="pl">Polski</option>
                 </select>
+                </label>
+            </div>
             </div>
         )
     }

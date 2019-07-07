@@ -1,0 +1,21 @@
+.navbar-container {
+    display: flex;
+}
+
+.navbar-navigation-buttons {
+    display: flex;
+    list-style: none;
+}
+
+.navbar-navigation-buttons li {
+    padding: 0 10px;
+}
+
+.navbar-navigation-buttons ul li:hover {
+    cursor: pointer;
+}
+
+.navbar-language-dropdown {
+    height: 40px;
+    box-sizing: border-box;
+}

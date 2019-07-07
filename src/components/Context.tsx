@@ -44,6 +44,7 @@ class MyProvider extends React.Component {
             <MyContext.Provider
                 value={{
                     state: this.state,
+                    setLanguage: this.setLanguage,
                 }}
             >
                 {this.props.children}

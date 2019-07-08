@@ -5,7 +5,7 @@ import '../css/NavBar.css';
 class NavBar extends React.Component<any, any> {
     render() {
         const { lang, translations } = this.context.state;
-        const { lists, creation, learning } = translations[lang].navBar;
+        const { lists, creation, learning, languageLabel } = translations[lang].navBar;
         return (
             <div className="navbar-container">
                 <div className="max-width-wrapper">
@@ -21,7 +21,7 @@ class NavBar extends React.Component<any, any> {
                     </li>
                 </ul>
                 <label className="navbar-language-dropdown">
-                    Language:
+                    {languageLabel}:
                 <select 
                     onChange={(e) => this.context.setLanguage(e.target.value)}
                 >

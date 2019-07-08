@@ -1,17 +1,23 @@
 import * as React from 'react';
 import { MyContext } from '../Context';
 
-const ListItem: React.FC = (props) => {
+type P = {
+    title: string;
+}
+
+const ListItem: React.FC<P> = (props) => {
 
     return (
         <MyContext.Consumer>
             {(context) => {
+                const { lang, translations } = context.state
+                const { label, remove, edit, use } = translations[lang].listItem
                 return (
                     <div>
-                        <div> List name placeholder </div>
-                        <button>Delete</button>
-                        <button>Edit</button>
-                        <button>Use</button>
+                        <div>{label}: {props.title} </div>
+                        <button>{remove}</button>
+                        <button>{edit}</button>
+                        <button>{use}</button>
                     </div>
                 )
             }}

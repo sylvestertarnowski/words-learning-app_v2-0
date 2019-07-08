@@ -7,8 +7,8 @@ const translations = {
             languageLabel: "Language",
         },
         listItem: {
-            title: "Title",
-            delete: "Delete",
+            label: "Title",
+            remove: "Delete",
             edit: "Edit",
             use: "Use",
         },
@@ -21,8 +21,8 @@ const translations = {
             languageLabel: "Język",
         },
         listItem: {
-            title: "Tytuł",
-            delete: "Usuń",
+            label: "Tytuł",
+            remove: "Usuń",
             edit: "Edytuj",
             use: "Wybierz",
         },

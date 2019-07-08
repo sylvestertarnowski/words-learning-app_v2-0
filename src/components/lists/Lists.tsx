@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { MyContext } from '../Context';
+import ListItem from './ListItem';
 
 
 type S = {
@@ -28,9 +29,8 @@ class Lists extends React.Component {
     }
 
     getTitles = () => {
-        const titlesOfLists = this.state[this.state.lang].map(item => <li key={item.title}>
-            Title: {item.title}
-        </li>)
+        const titlesOfLists = this.state[this.state.lang].map(item => <ListItem key={item.title}
+            title={item.title} />)
         this.setState({
             titlesOfLists: titlesOfLists,
         })

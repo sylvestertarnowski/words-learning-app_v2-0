@@ -1,5 +1,6 @@
 import * as React from 'react';
 import translations from './translations.js';
+import wordsListsSeed from './wordsListsSeed.js';
 
 const MyContext = React.createContext({} as any);
 
@@ -9,28 +10,7 @@ class MyProvider extends React.Component {
         translations: {
             ...translations,
         },
-        en: [
-            {
-                title: "List 1"
-            },
-            {
-                title: "List 2"
-            },
-            {
-                title: "List 3"
-            },
-        ],
-        pl: [
-            {
-                title: "List 1"
-            },
-            {
-                title: "List 2"
-            },
-            {
-                title: "List 3"
-            },
-        ],
+        ...wordsListsSeed
     }
 
     setLanguage = (lang: 'en' | 'pl') => {

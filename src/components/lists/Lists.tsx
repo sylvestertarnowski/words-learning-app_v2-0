@@ -7,7 +7,7 @@ class Lists extends React.Component {
     }
 
     render() {
-        const titlesOfLists = this.context.state[this.context.state.lang].map((item: {title: string}) => <ListItem key={item.title}
+        const titlesOfLists = this.context.state.lists.map((item: {title: string}) => <ListItem key={item.title}
             title={item.title} />)
         return (
             <div>

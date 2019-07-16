@@ -19,6 +19,8 @@ class MyProvider extends React.Component {
         })
     }
 
+    setList = (list: string) => {}
+
     render() {
         return (
             <MyContext.Provider

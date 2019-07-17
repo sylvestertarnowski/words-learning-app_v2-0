@@ -10,7 +10,8 @@ class MyProvider extends React.Component {
         translations: {
             ...translations,
         },
-        ...wordsListsSeed
+        ...wordsListsSeed,
+        pickedList: {},
     }
 
     setLanguage = (lang: 'en' | 'pl') => {
@@ -19,7 +20,18 @@ class MyProvider extends React.Component {
         })
     }
 
-    setList = (list: string) => {}
+    setPickedList = (title: string) => {
+        const { lists } = this.state;
+
+        for(let i = 0; i < lists.length; i++) {
+            if(lists[i].title === title) {
+                this.setState({
+                    pickedList: lists[i],
+                })
+                return;
+            }
+        }
+    }
 
     render() {
         return (
@@ -27,6 +39,7 @@ class MyProvider extends React.Component {
                 value={{
                     state: this.state,
                     setLanguage: this.setLanguage,
+                    setPickedList: this.setPickedList,
                 }}
             >
                 {this.props.children}

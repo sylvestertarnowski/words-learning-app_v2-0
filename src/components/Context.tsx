@@ -4,6 +4,14 @@ import wordsListsSeed from './wordsListsSeed.js';
 
 const MyContext = React.createContext({} as any);
 
+interface PickedList {
+    title: string,
+    words: {
+        word: string,
+        translation: string,
+    }[],
+}
+
 class MyProvider extends React.Component {
     readonly state = {
         lang: 'en',
@@ -11,7 +19,7 @@ class MyProvider extends React.Component {
             ...translations,
         },
         ...wordsListsSeed,
-        pickedList: {},
+        pickedList: {} as PickedList,
     }
 
     setLanguage = (lang: 'en' | 'pl') => {
@@ -21,14 +29,18 @@ class MyProvider extends React.Component {
     }
 
     setPickedList = (title: string) => {
-        const { lists } = this.state;
+        const { lists, pickedList } = this.state;
 
-        for(let i = 0; i < lists.length; i++) {
-            if(lists[i].title === title) {
-                this.setState({
-                    pickedList: lists[i],
-                })
-                return;
+        if (title === pickedList.title) {
+            return;
+        } else {
+            for (let i = 0; i < lists.length; i++) {
+                if (lists[i].title === title) {
+                    this.setState({
+                        pickedList: lists[i],
+                    })
+                    return;
+                }
             }
         }
     }

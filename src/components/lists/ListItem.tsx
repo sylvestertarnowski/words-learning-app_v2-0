@@ -16,7 +16,9 @@ const ListItem: React.FC<P> = (props) => {
                     <div>
                         <div>{label}: {props.title} </div>
                         <button>{remove}</button>
-                        <button>{edit}</button>
+                        <button
+                            onClick={() => context.setPickedList(props.title)}
+                        >{edit}</button>
                         <button 
                             onClick={() => context.setPickedList(props.title)}
                         >{use}</button>

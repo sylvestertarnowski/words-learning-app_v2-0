@@ -19,7 +19,7 @@ class MyProvider extends React.Component {
             ...translations,
         },
         ...wordsListsSeed,
-        pickedList: {} as PickedList,
+        pickedList: null as PickedList | null,
     }
 
     setLanguage = (lang: 'en' | 'pl') => {
@@ -31,7 +31,7 @@ class MyProvider extends React.Component {
     setPickedList = (title: string) => {
         const { lists, pickedList } = this.state;
 
-        if (title === pickedList.title) {
+        if (pickedList && title === pickedList.title) {
             return;
         } else {
             for (let i = 0; i < lists.length; i++) {

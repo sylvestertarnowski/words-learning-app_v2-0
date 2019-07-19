@@ -14,9 +14,17 @@ const Learning: React.FC = () => {
                         </div>
                     )
                 } else {
+                    const listOfCurrentWords = pickedList.words.map((word: any) => {
+                        return (
+                            <li key={word.word}>{word.word}</li>
+                        )
+                    })
+
                     return (
                         <div>
-                            Learning !!!!
+                            <ul>
+                                {listOfCurrentWords}
+                            </ul>
                         </div>
                     )
                 }

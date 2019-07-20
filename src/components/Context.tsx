@@ -6,13 +6,15 @@ const MyContext = React.createContext({} as any);
 
 type CurrentList = {
     title: string,
-    words: {word: string, translation: string,}[],
+    words: CurrentWord[],
 }
 
 type CurrentWord = {
     word: string;
     translation: string;
 }
+
+type SubmitMsg = 'Correct!' | 'Wrong!' | null;
 
 class MyProvider extends React.Component {
     readonly state = {
@@ -23,6 +25,8 @@ class MyProvider extends React.Component {
         ...wordsListsSeed,
         currentList: null as CurrentList | null,
         currentWord: null as CurrentWord | null,
+        submitMsg: null as SubmitMsg,
+        prevTranslation: "" as string,
     }
 
     setLanguage = (lang: 'en' | 'pl') => {
@@ -41,7 +45,7 @@ class MyProvider extends React.Component {
                 if (lists[i].title === title) {
                     this.setState({
                         currentList: lists[i],
-                    })
+                    }, this.setCurrentWord)
                     return;
                 }
             }
@@ -59,11 +63,39 @@ class MyProvider extends React.Component {
         }
     }
 
-    guessAttempt = (myGuess: string) => {
-        // check if the words match
-        // if words match, do success and new random word
-        // if words do not match, display the word and failure, pick new random word
+    removeGuessedWord = (myGuess: string, callback: any) => {
+        const { currentList } = this.state;
+        if (currentList) {
+            const { words } = currentList;
+            const filteredList = words.filter((word: CurrentWord) => {
+                return word.translation !== myGuess;
+            })
+            this.setState({
+                currentList: {
+                    ...currentList,
+                    words: filteredList,
+                }
+            })
+        } 
 
+    }
+
+    guessAttempt = (myGuess: string) => {
+        const { currentWord } = this.state;
+        if (currentWord) {
+        const { translation } = currentWord;
+            if (myGuess === translation) {
+                this.removeGuessedWord(myGuess, this.setState({
+                    submitMsg: 'Correct!',
+                    prevTranslation: translation,
+                }, this.setCurrentWord))
+            } else {
+                this.setState({
+                    submitMsg: 'Wrong!',
+                    prevTranslation: translation,
+                }, this.setCurrentWord)
+            }
+        }
     }
 
     render() {

@@ -34,7 +34,8 @@ const Learning: React.FC<P> = (props) => {
                 } else if (currentList.words.length === 0) {
                     return (
                         <div>
-                            Which list do you want to use?
+                            Congratulations! You finished this list.
+                            Which list do you want to use now?
                             <button>Same list</button>
                             <button>Another list</button>
                         </div>
@@ -56,7 +57,7 @@ const Learning: React.FC<P> = (props) => {
                                 onSubmit={
                                     (e) => {
                                         e.preventDefault();
-                                        return context.guessAttempt(myGuess);
+                                        return context.guessAttempt(myGuess, setMyGuess(''));
                                     }
                                 }
                             >

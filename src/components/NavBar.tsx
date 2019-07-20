@@ -10,7 +10,7 @@ class NavBar extends React.Component<any, any> {
             <div className="navbar-container">
                 <div className="max-width-wrapper">
                 <ul className="navbar-navigation-buttons">
-                    <li onClick={() => this.props.setScreen('lists')}>
+                    <li onClick={() => this.props.setScreen('catalog')}>
                         {catalog}
                     </li>
                     <li onClick={() => this.props.setScreen('creation')}>

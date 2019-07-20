@@ -31,7 +31,7 @@ class MyProvider extends React.Component {
         })
     }
 
-    setPickedList = (title: string) => {
+    setCurrentList = (title: string) => {
         const { lists, currentList } = this.state;
 
         if (currentList && title === currentList.title) {
@@ -48,7 +48,7 @@ class MyProvider extends React.Component {
         }
     }
 
-    setPickedWord = () => {
+    setCurrentWord = () => {
         const { currentList } = this.state;
         if (currentList) {
             const { words } = currentList;
@@ -66,7 +66,7 @@ class MyProvider extends React.Component {
                 value={{
                     state: this.state,
                     setLanguage: this.setLanguage,
-                    setPickedList: this.setPickedList,
+                    setCurrentList: this.setCurrentList,
                 }}
             >
                 {this.props.children}

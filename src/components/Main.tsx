@@ -1,16 +1,16 @@
 import * as React from 'react';
 import NavBar from './NavBar';
-import Lists from './lists/Lists';
+import Catalog from './lists/Catalog';
 import Creation from './creation/Creation';
 import Learning from './learning/Learning';
 
 type S = {
-    currentScreen: 'lists' | 'creation' | 'learning';
+    currentScreen: 'catalog' | 'creation' | 'learning';
 }
 
 class Main extends React.Component {
     readonly state = {
-        currentScreen: "lists",
+        currentScreen: 'catalog',
     } as S;
     
     setScreen = (screen: S["currentScreen"]) => {
@@ -20,7 +20,7 @@ class Main extends React.Component {
     }
 
     readonly screens = {
-        lists: <Lists />,
+        catalog: <Catalog />,
         creation: <Creation />,
         learning: <Learning setScreen={this.setScreen} />,
     }

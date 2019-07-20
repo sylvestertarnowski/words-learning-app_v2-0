@@ -1,13 +1,13 @@
 import * as React from 'react';
 import { MyContext } from '../Context';
-import ListItem from './ListItem';
+import CatalogItem from './CatalogItem';
 
-class Lists extends React.Component {
+class Catalog extends React.Component {
     readonly state = {
     }
 
     render() {
-        const titlesOfLists = this.context.state.lists.map((item: {title: string}) => <ListItem key={item.title}
+        const titlesOfLists = this.context.state.lists.map((item: {title: string}) => <CatalogItem key={item.title}
             title={item.title} />)
         return (
             <div>
@@ -19,6 +19,6 @@ class Lists extends React.Component {
     }
 }
 
-Lists.contextType = MyContext;
+Catalog.contextType = MyContext;
 
-export default Lists;
+export default Catalog;

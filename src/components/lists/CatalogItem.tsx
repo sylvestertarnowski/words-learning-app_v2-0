@@ -5,7 +5,7 @@ type P = {
     title: string;
 }
 
-const ListItem: React.FC<P> = (props) => {
+const CatalogItem: React.FC<P> = (props) => {
 
     return (
         <MyContext.Consumer>
@@ -17,10 +17,10 @@ const ListItem: React.FC<P> = (props) => {
                         <div>{label}: {props.title} </div>
                         <button>{remove}</button>
                         <button
-                            onClick={() => context.setPickedList(props.title)}
+                            onClick={() => context.setCurrentList(props.title)}
                         >{edit}</button>
                         <button 
-                            onClick={() => context.setPickedList(props.title)}
+                            onClick={() => context.setCurrentList(props.title)}
                         >{use}</button>
                     </div>
                 )
@@ -29,4 +29,4 @@ const ListItem: React.FC<P> = (props) => {
     )
 }
 
-export default ListItem;
+export default CatalogItem;

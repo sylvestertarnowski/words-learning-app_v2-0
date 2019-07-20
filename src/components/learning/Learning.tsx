@@ -2,21 +2,22 @@ import * as React from 'react';
 import { MyContext } from '../Context';
 
 interface P {
-    setScreen: (screen: 'lists' | 'creation' | 'learning') => void;
+    setScreen: (screen: 'catalog' | 'creation' | 'learning') => void;
 }
 
 const Learning: React.FC<P> = (props) => {
     return (
         <MyContext.Consumer>
             {(context) => {
-                const { pickedList, pickedWord } = context.state;
-                
-                if (pickedList === null) {
+                const { currentList, currentWord } = context.state;
+
+                if (currentList === null) {
+
                     return (
                         <div>
-                            Please pick a list for the catalog, or create a new list.
+                            Please pick a list from the catalog, or create a new list.
                             <button
-                                onClick={() => props.setScreen('lists')}
+                                onClick={() => props.setScreen('catalog')}
                             >
                                 Pick list
                             </button>
@@ -27,8 +28,10 @@ const Learning: React.FC<P> = (props) => {
                             </button>
                         </div>
                     )
+
                 } else {
-                    const listOfCurrentWords = pickedList.words.map((word: any) => {
+
+                    const listOfCurrentWords = currentList.words.map((word: any) => {
                         return (
                             <li key={word.word}>{word.word}</li>
                         )
@@ -41,7 +44,7 @@ const Learning: React.FC<P> = (props) => {
                             </ul>
                             <form>
                                 <div>
-                                    <span>{pickedWord && pickedWord.word}</span>
+                                    <span>{currentWord && currentWord.word}</span>
                                     <input type="text" placeholder="Your guess" />
                                 </div>
                                 <button>
@@ -50,6 +53,7 @@ const Learning: React.FC<P> = (props) => {
                             </form>
                         </div>
                     )
+
                 }
             }}
         </MyContext.Consumer>

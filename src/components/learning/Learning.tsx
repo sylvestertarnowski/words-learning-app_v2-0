@@ -1,11 +1,14 @@
 import * as React from 'react';
 import { MyContext } from '../Context';
+import { useState } from 'react';
 
-interface P {
-    setScreen: (screen: 'catalog' | 'creation' | 'learning') => void;
+type P = {
+    setScreen: (screen: 'catalog' | 'creation' | 'learning') => void,
 }
 
 const Learning: React.FC<P> = (props) => {
+    const [myGuess, setMyGuess] = useState('');
+
     return (
         <MyContext.Consumer>
             {(context) => {
@@ -28,7 +31,14 @@ const Learning: React.FC<P> = (props) => {
                             </button>
                         </div>
                     )
-
+                } else if (currentList.words.length === 0) {
+                    return (
+                        <div>
+                            Which list do you want to use?
+                            <button>Same list</button>
+                            <button>Another list</button>
+                        </div>
+                    )
                 } else {
 
                     const listOfCurrentWords = currentList.words.map((word: any) => {
@@ -42,10 +52,22 @@ const Learning: React.FC<P> = (props) => {
                             <ul>
                                 {listOfCurrentWords}
                             </ul>
-                            <form>
+                            <form
+                                onSubmit={
+                                    (e) => {
+                                        e.preventDefault();
+                                        return context.guessAttempt(myGuess);
+                                    }
+                                }
+                            >
                                 <div>
                                     <span>{currentWord && currentWord.word}</span>
-                                    <input type="text" placeholder="Your guess" />
+                                    <input 
+                                        type="text" 
+                                        name="myGuess"
+                                        value={myGuess}
+                                        onChange={({target: {value}}) => setMyGuess(value)}
+                                    />
                                 </div>
                                 <button>
                                     Guess!

@@ -5,13 +5,13 @@ import '../css/NavBar.css';
 class NavBar extends React.Component<any, any> {
     render() {
         const { lang, translations } = this.context.state;
-        const { lists, creation, learning, languageLabel } = translations[lang].navBar;
+        const { catalog, creation, learning, languageLabel } = translations[lang].navBar;
         return (
             <div className="navbar-container">
                 <div className="max-width-wrapper">
                 <ul className="navbar-navigation-buttons">
                     <li onClick={() => this.props.setScreen('lists')}>
-                        {lists}
+                        {catalog}
                     </li>
                     <li onClick={() => this.props.setScreen('creation')}>
                         {creation}

@@ -1,7 +1,7 @@
 const translations = {
     en: {
         navBar: {
-            lists: "Lists",
+            catalog: "Catalog",
             creation: "Creation",
             learning: "Learning",
             languageLabel: "Language",
@@ -15,7 +15,7 @@ const translations = {
     },
     pl: {
         navBar: {
-            lists: "Listy",
+            catalog: "Katalog",
             creation: "Tworzenie",
             learning: "Uczenie",
             languageLabel: "Język",

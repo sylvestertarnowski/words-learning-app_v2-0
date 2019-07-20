@@ -57,6 +57,12 @@ class MyProvider extends React.Component {
                 currentWord: randomWord,
             })
         }
+    }
+
+    guessAttempt = (myGuess: string) => {
+        // check if the words match
+        // if words match, do success and new random word
+        // if words do not match, display the word and failure, pick new random word
 
     }
 
@@ -67,6 +73,7 @@ class MyProvider extends React.Component {
                     state: this.state,
                     setLanguage: this.setLanguage,
                     setCurrentList: this.setCurrentList,
+                    guessAttempt: this.guessAttempt,
                 }}
             >
                 {this.props.children}

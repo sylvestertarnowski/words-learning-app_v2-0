@@ -12,17 +12,17 @@ class Main extends React.Component {
     readonly state = {
         currentScreen: "lists",
     } as S;
-
-    readonly screens = {
-        lists: <Lists />,
-        creation: <Creation />,
-        learning: <Learning />,
-    }
-
+    
     setScreen = (screen: S["currentScreen"]) => {
         this.setState({
             currentScreen: screen,
         })
+    }
+
+    readonly screens = {
+        lists: <Lists />,
+        creation: <Creation />,
+        learning: <Learning setScreen={this.setScreen} />,
     }
 
     render() {

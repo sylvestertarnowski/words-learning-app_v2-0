@@ -1,7 +1,11 @@
 import * as React from 'react';
 import { MyContext } from '../Context';
 
-const Learning: React.FC = () => {
+interface P {
+    setScreen: (screen: 'lists' | 'creation' | 'learning') => void;
+}
+
+const Learning: React.FC<P> = (props) => {
     return (
         <MyContext.Consumer>
             {(context) => {
@@ -11,6 +15,9 @@ const Learning: React.FC = () => {
                     return (
                         <div>
                             Please pick a list!
+                            <button
+                                onClick={() => props.setScreen('lists')}
+                            >Pick list</button>
                         </div>
                     )
                 } else {

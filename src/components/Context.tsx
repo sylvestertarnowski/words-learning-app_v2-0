@@ -6,10 +6,12 @@ const MyContext = React.createContext({} as any);
 
 interface PickedList {
     title: string,
-    words: {
-        word: string,
-        translation: string,
-    }[],
+    words: PickedWord[],
+}
+
+interface PickedWord {
+    word: string;
+    translation: string;
 }
 
 class MyProvider extends React.Component {
@@ -20,6 +22,7 @@ class MyProvider extends React.Component {
         },
         ...wordsListsSeed,
         pickedList: null as PickedList | null,
+        pickedWord: null as PickedWord | null,
     }
 
     setLanguage = (lang: 'en' | 'pl') => {

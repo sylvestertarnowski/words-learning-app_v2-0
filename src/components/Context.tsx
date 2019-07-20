@@ -40,7 +40,7 @@ class MyProvider extends React.Component {
             for (let i = 0; i < lists.length; i++) {
                 if (lists[i].title === title) {
                     this.setState({
-                        pickedList: lists[i],
+                        currentList: lists[i],
                     })
                     return;
                 }

@@ -4,12 +4,12 @@ import wordsListsSeed from './wordsListsSeed.js';
 
 const MyContext = React.createContext({} as any);
 
-interface PickedList {
+type PickedList = {
     title: string,
-    words: PickedWord[],
+    words: {word: string, translation: string,}[],
 }
 
-interface PickedWord {
+type PickedWord = {
     word: string;
     translation: string;
 }
@@ -46,6 +46,18 @@ class MyProvider extends React.Component {
                 }
             }
         }
+    }
+
+    setPickedWord = () => {
+        const { pickedList } = this.state;
+        if (pickedList) {
+            const { words } = pickedList;
+            const randomWord = words[Math.floor(Math.random()*words.length)]
+            this.setState({
+                pickedWord: randomWord,
+            })
+        }
+
     }
 
     render() {

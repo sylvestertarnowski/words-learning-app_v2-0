@@ -41,11 +41,11 @@ const Learning: React.FC<P> = (props) => {
                             </ul>
                             <form>
                                 <div>
-                                    <span>{pickedWord.word}</span>
+                                    <span>{pickedWord && pickedWord.word}</span>
                                     <input type="text" placeholder="Your guess" />
                                 </div>
                                 <button>
-                                    Try
+                                    Guess!
                                 </button>
                             </form>
                         </div>

@@ -4,12 +4,12 @@ import wordsListsSeed from './wordsListsSeed.js';
 
 const MyContext = React.createContext({} as any);
 
-type PickedList = {
+type CurrentList = {
     title: string,
     words: {word: string, translation: string,}[],
 }
 
-type PickedWord = {
+type CurrentWord = {
     word: string;
     translation: string;
 }
@@ -21,8 +21,8 @@ class MyProvider extends React.Component {
             ...translations,
         },
         ...wordsListsSeed,
-        pickedList: null as PickedList | null,
-        pickedWord: null as PickedWord | null,
+        currentList: null as CurrentList | null,
+        currentWord: null as CurrentWord | null,
     }
 
     setLanguage = (lang: 'en' | 'pl') => {
@@ -32,9 +32,9 @@ class MyProvider extends React.Component {
     }
 
     setPickedList = (title: string) => {
-        const { lists, pickedList } = this.state;
+        const { lists, currentList } = this.state;
 
-        if (pickedList && title === pickedList.title) {
+        if (currentList && title === currentList.title) {
             return;
         } else {
             for (let i = 0; i < lists.length; i++) {
@@ -49,12 +49,12 @@ class MyProvider extends React.Component {
     }
 
     setPickedWord = () => {
-        const { pickedList } = this.state;
-        if (pickedList) {
-            const { words } = pickedList;
+        const { currentList } = this.state;
+        if (currentList) {
+            const { words } = currentList;
             const randomWord = words[Math.floor(Math.random()*words.length)]
             this.setState({
-                pickedWord: randomWord,
+                currentWord: randomWord,
             })
         }
 

@@ -36,18 +36,14 @@ class MyProvider extends React.Component {
     }
 
     setCurrentList = (title: string) => {
-        const { lists, currentList } = this.state;
+        const { lists } = this.state;
 
-        if (currentList && title === currentList.title) {
-            return;
-        } else {
-            for (let i = 0; i < lists.length; i++) {
-                if (lists[i].title === title) {
-                    this.setState({
-                        currentList: lists[i],
-                    }, this.setCurrentWord)
-                    return;
-                }
+        for (let i = 0; i < lists.length; i++) {
+            if (lists[i].title === title) {
+                this.setState({
+                    currentList: lists[i],
+                }, this.setCurrentWord)
+                return;
             }
         }
     }
@@ -56,7 +52,7 @@ class MyProvider extends React.Component {
         const { currentList } = this.state;
         if (currentList) {
             const { words } = currentList;
-            const randomWord = words[Math.floor(Math.random()*words.length)]
+            const randomWord = words[Math.floor(Math.random() * words.length)]
             this.setState({
                 currentWord: randomWord,
             })
@@ -76,14 +72,14 @@ class MyProvider extends React.Component {
                     words: filteredList,
                 }
             })
-        } 
+        }
 
     }
 
     guessAttempt = (myGuess: string) => {
         const { currentWord } = this.state;
         if (currentWord) {
-        const { translation } = currentWord;
+            const { translation } = currentWord;
             if (myGuess === translation) {
                 this.removeGuessedWord(myGuess, this.setState({
                     submitMsg: 'Correct!',

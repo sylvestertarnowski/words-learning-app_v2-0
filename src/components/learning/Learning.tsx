@@ -36,8 +36,16 @@ const Learning: React.FC<P> = (props) => {
                         <div>
                             Congratulations! You finished this list.
                             Which list do you want to use now?
-                            <button>Same list</button>
-                            <button>Another list</button>
+                            <button
+                                onClick={() => context.setCurrentList(currentList.title)}
+                            >
+                                Same list
+                            </button>
+                            <button
+                                onClick={() => props.setScreen('catalog')}
+                            >
+                                Another list
+                            </button>
                         </div>
                     )
                 } else {
@@ -63,11 +71,11 @@ const Learning: React.FC<P> = (props) => {
                             >
                                 <div>
                                     <span>{currentWord && currentWord.word}</span>
-                                    <input 
-                                        type="text" 
+                                    <input
+                                        type="text"
                                         name="myGuess"
                                         value={myGuess}
-                                        onChange={({target: {value}}) => setMyGuess(value)}
+                                        onChange={({ target: { value } }) => setMyGuess(value)}
                                     />
                                 </div>
                                 <button>

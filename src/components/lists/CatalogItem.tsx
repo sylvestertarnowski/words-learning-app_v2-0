@@ -11,7 +11,7 @@ const CatalogItem: React.FC<P> = (props) => {
         <MyContext.Consumer>
             {(context) => {
                 const { lang, translations } = context.state
-                const { label, remove, edit, use } = translations[lang].listItem
+                const { label, remove, edit, use } = translations[lang].catalogItem
                 return (
                     <div>
                         <div>{label}: {props.title} </div>

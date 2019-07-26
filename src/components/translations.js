@@ -6,7 +6,7 @@ const translations = {
             learning: "Learning",
             languageLabel: "Language",
         },
-        listItem: {
+        catalogItem: {
             label: "Title",
             remove: "Delete",
             edit: "Edit",
@@ -20,7 +20,7 @@ const translations = {
             learning: "Uczenie",
             languageLabel: "Język",
         },
-        listItem: {
+        catalogItem: {
             label: "Tytuł",
             remove: "Usuń",
             edit: "Edytuj",

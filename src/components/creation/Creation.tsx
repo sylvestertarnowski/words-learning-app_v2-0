@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 type S = {
     title: string,
@@ -15,6 +15,10 @@ const Creation: React.FC = () => {
     const [nextWord, setNextWord] = useState("");
     const [nextTranslation, setNextTranslation] = useState("");
     
+    useEffect(() => {
+        setNextWord("");
+        setNextTranslation("");
+    }, [myWords])
 
     return (
         <div>
